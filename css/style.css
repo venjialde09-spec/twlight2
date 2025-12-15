@@ -1,0 +1,233 @@
+
+
+/* ================================
+   Vampire Palette — inspired by @kotastiia
+   (rich reds, bruised mauves, ash greys, deep blacks)
+   Use: var(--color-name)
+=================================== */
+
+:root {
+  /* Lights (rosy / blush) */
+  --rose-100: #F2E7E6;
+  --rose-200: #EED6D4;
+  --rose-300: #E8C2BE;
+
+  /* Mid reds / terracotta */
+  --scarlet-400: #C45B56;
+  --claret-500:  #A84543;
+  --maroon-600:  #8D3A37;
+
+  /* Mauves / ash greys */
+  --mauve-400:   #7A6667;
+  --ash-500:     #6C5F61;
+  --slate-500:   #6A6A70;
+
+  /* Dark reds / wine */
+  --oxblood-700: #5A2324;
+  --wine-800:    #421A1B;
+
+  /* Deep browns / near-black */
+  --cocoa-800:   #3A1F1D;
+  --umbr-900:    #251514;
+  --ink-900:     #0E0D0E;
+
+  /* Utility */
+  --text-on-dark: #F8F4F3;
+  --text-on-light: #1A1313;
+  --focus-ring: #E8C2BE;     /* soft blush focus */
+}
+
+/* ============== Global ============== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+               "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text-on-dark);
+  background:
+    radial-gradient(1200px 600px at 80% 0%, rgba(66,26,27,0.25), transparent 60%),
+    radial-gradient(1000px 500px at 0% 100%, rgba(122,102,103,0.18), transparent 60%),
+    linear-gradient(180deg, var(--umbr-900), var(--ink-900));
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+/* Use a max-width container feel without changing HTML */
+.poster, .logbox, .logbut {
+  width: min(520px, 100%);
+}
+
+/* ============== Poster ============== */
+
+.poster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(58,31,29,0.55), rgba(13,13,14,0.55)),
+    linear-gradient(0deg, rgba(197,91,86,0.15), rgba(197,91,86,0.15));
+  box-shadow:
+    0 12px 24px rgba(14,13,14,0.45),
+    inset 0 1px 0 rgba(242,231,230,0.08);
+}
+
+.poster img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(232,194,190,0.35); /* blush edge */
+}
+
+/* ============== Log Box (form area) ============== */
+
+.logbox {
+  background:
+    linear-gradient(180deg, rgba(37,21,20,0.82), rgba(14,13,14,0.9));
+  border: 1px solid rgba(108,95,97,0.35); /* ash */
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(4px);
+  box-shadow:
+    0 10px 28px rgba(14,13,14,0.55),
+    inset 0 1px 0 rgba(248,244,243,0.06);
+}
+
+/* Labels */
+.logbox label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--rose-300);
+}
+
+/* Inputs */
+.logbox input[type="text"],
+.logbox input[type="password"],
+.logbox input[type="email"] {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--ash-500);
+  background: linear-gradient(180deg, rgba(58,31,29,0.85), rgba(37,21,20,0.92));
+  color: var(--text-on-dark);
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  font-size: 0.95rem;
+  caret-color: var(--rose-300); 
+}
+
+.logbox input::placeholder {
+  color: rgba(238,214,212,0.65); 
+}
+
+.logbox input:hover {
+  border-color: var(--mauve-400);
+}
+
+.logbox input:focus {
+  border-color: var(--focus-ring);
+  box-shadow:
+    0 0 0 3px rgba(232,194,190,0.22),
+    0 8px 18px rgba(14,13,14,0.45) inset;
+  background: linear-gradient(180deg, rgba(66,26,27,0.9), rgba(58,31,29,0.95));
+}
+
+.logbox br {
+  line-height: 1.2;
+}
+
+
+
+.logbut {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+
+.logbut button {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+
+.logbut a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 180px;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  border-radius: 12px;
+
+  color: var(--text-on-dark);
+  background:
+    linear-gradient(135deg, var(--claret-500), var(--scarlet-400)),
+    radial-gradient(140% 120% at 20% 20%, rgba(197,91,86,0.35), transparent 60%);
+  box-shadow:
+    0 12px 24px rgba(14,13,14,0.55),
+    inset 0 -2px 0 rgba(58,31,29,0.6),
+    inset 0 1px 0 rgba(242,231,230,0.14);
+  border: 1px solid rgba(168,69,67,0.8);
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+.logbut a:hover {
+  filter: saturate(1.08);
+  box-shadow:
+    0 16px 30px rgba(14,13,14,0.6),
+    inset 0 -3px 0 rgba(90,35,36,0.7);
+  transform: translateY(-1px);
+}
+
+.logbut a:active {
+  transform: translateY(0);
+  box-shadow:
+    0 10px 22px rgba(14,13,14,0.55),
+    inset 0 2px 0 rgba(58,31,29,0.7);
+}
+
+
+:root {
+  scrollbar-color: var(--mauve-400) var(--ink-900);
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink-900);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--ash-500), var(--mauve-400));
+  border-radius: 8px;
+}
+
+@media (max-width: 420px) {
+  .poster { margin-bottom: 1rem; }
+  .logbox { padding: 1rem; }
+  .logbut a { min-width: 100%; }
+}

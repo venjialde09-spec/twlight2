@@ -1,0 +1,155 @@
+
+/* ===========================
+   Vampire Theme (Procreate Palette Inspired)
+   Deep reds, muted rose, charcoal, near-black
+   =========================== */
+
+/* Color tokens (feel free to tweak) */
+:root {
+  --bg: #0b0b0c;              /* near-black background */
+  --surface: #121213;         /* slightly lighter panel */
+  --text: #f5eaea;            /* pale rose text */
+  --muted-text: #e7d7d7;
+
+  --red-rose: #b35656;        /* dusty rose */
+  --red-blood: #7d2b2b;       /* deep blood red */
+  --red-dark: #4b1919;        /* vampire dark */
+  --red-glow: #d67373;        /* hover accent */
+
+  --gray-warm: #8a8082;       /* warm gray */
+  --shadow: rgba(0, 0, 0, 0.55);
+  --focus: #e0b4b4;           /* subtle focus ring */
+}
+
+/* Base reset without touching your HTML structure */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(1200px 800px at 20% 10%, #151214, var(--bg));
+  color: var(--text);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* Center the content div nicely, even though no classes exist */
+body > div {
+  min-height: 100dvh; /* Mobile safe viewport */
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+body > div {
+  gap: 1rem;
+}
+
+/* Stack buttons on small screens, align horizontally on wider ones */
+@media (min-width: 560px) {
+  body > div {
+    grid-auto-flow: column;
+  }
+}
+
+/* Button styling while keeping your original HTML intact */
+button {
+  appearance: none;
+  border: none;
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, var(--red-rose), var(--red-blood));
+  color: var(--text);
+  padding: 0; /* we'll let the <a> handle inner spacing */
+  box-shadow:
+    0 10px 24px var(--shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+  overflow: hidden;
+}
+
+/* Make the anchor behave like the button’s label and fill its area */
+button > a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;            /* keep button text color */
+  padding: 0.95rem 1.3rem;   /* visual size */
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: none;
+  /* Improve touch targets */
+  min-width: 220px;
+  text-align: center;
+}
+
+/* Hover/active states */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 32px var(--shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  filter: saturate(1.06);
+}
+
+button:hover {
+  background:
+    linear-gradient(180deg, var(--red-glow), var(--red-blood));
+}
+
+button:active {
+  transform: translateY(0);
+  filter: saturate(1);
+}
+
+/* Focus-visible for keyboard navigation (works for both button and anchor) */
+button:focus-visible,
+button > a:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--focus),
+    0 10px 24px var(--shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Subtle glass card behind buttons for depth */
+body > div::before {
+  content: "";
+  position: fixed;
+  inset: 6% 8%;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Typographic polish */
+button > a {
+  font-size: clamp(0.95rem, 0.9rem + 0.4vw, 1.05rem);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Optional: differentiate the two buttons slightly by text content */
+button:first-of-type {
+  background: linear-gradient(180deg, var(--red-glow), var(--red-blood));
+}
+button:last-of-type {
+  background: linear-gradient(180deg, var(--gray-warm), var(--red-dark));
+}
+
+/* Improve contrast if user requests higher contrast */
+@media (prefers-contrast: more) {
+  button {
+    box-shadow:
+      0 12px 28px rgba(0, 0, 0, 0.7),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  button > a {
+    letter-spacing: 0.3px;
+  }
+}
+
